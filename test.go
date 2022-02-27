@@ -1,15 +1,23 @@
 package main
 
+import "time"
+
 func main() {
-	//GetDisk()
-	//fmt.Println(paths)
-	//getMemory()
-	//GetNetInterface()
-	//GetProcess()
-	//GetLog()
-	//GetNetInfo()
-	//GetFireWall()
-	//getHostInfo()
-	//GetService()
-	GetAppInfo()
+
+	for {
+		GetAppInfo()
+		getCpu()
+		GetDataAmount()
+		Getdevice()
+		GetDisk()
+		GetFireWall()
+		GetHostInfo()
+		GetLog()
+		getMemory()
+		GetNetInfo()
+		GetNetInterface()
+		GetProcess()
+		GetService()
+		time.Sleep(time.Second * 1)
+	}
 }
