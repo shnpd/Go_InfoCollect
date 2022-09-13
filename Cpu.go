@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-//Info			CPU基本信息
+//Info		CPU基本信息
 //LogicalCount	逻辑CPU数量
 //PhysicalCount	物理CPU数量
 //Usage			CPU使用情况
