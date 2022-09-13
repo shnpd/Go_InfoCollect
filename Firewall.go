@@ -6,6 +6,10 @@ import (
 	"os/exec"
 )
 
+//Iptables_status：Iptables防火墙状态
+//Iptables_rules:Iptables防火墙规则
+//Firewall_status：Firewall防火墙状态
+//Firewall_rules:Firewall防火墙规则
 type FireWall struct {
 	Iptables_status string `json:"iptablesStatus"`
 	Iptables_rules  string `json:"iptablesRules"`
@@ -48,10 +52,6 @@ func Getiptables() (string, string) {
 		fmt.Println("ReadAll Stdout:", err2.Error())
 		return "", ""
 	}
-	//if err := cmd.Wait(); err != nil {
-	//	fmt.Println("wait:", err.Error())
-	//	return
-	//}
 	if err2 := cmd2.Wait(); err2 != nil {
 		fmt.Println("wait:", err2.Error())
 		return "", ""

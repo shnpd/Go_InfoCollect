@@ -4,6 +4,11 @@ import (
 	"github.com/shirou/gopsutil/disk"
 )
 
+//Patrions:磁盘分区
+//Usage：使用情况
+//SerialNumber：序列号
+//Label：标签
+//IO：磁盘IO信息
 type Disk struct {
 	Partitions   []disk.PartitionStat             `json:"partitions"`
 	Usage        []*disk.UsageStat                `json:"usage"`
@@ -87,8 +92,4 @@ func GetDisk() Disk {
 	return disk
 }
 
-//fmt.Println(GetPartitions())
-// /dev/sda1
-// /dev/sr0
-//	fmt.Println(GetUsage("/dev/sr0"))
-//fmt.Println(GetIO("/dev/sr0"))
+

@@ -5,19 +5,19 @@ import (
 )
 
 //type InfoStat struct {
-//	Hostname             string `json:"hostname"`
-//	Uptime               uint64 `json:"uptime"`
-//	BootTime             uint64 `json:"bootTime"`
-//	Procs                uint64 `json:"procs"`           // number of processes
-//	OS                   string `json:"os"`              // ex: freebsd, linux
-//	Platform             string `json:"platform"`        // ex: ubuntu, linuxmint
-//	PlatformFamily       string `json:"platformFamily"`  // ex: debian, rhel
-//	PlatformVersion      string `json:"platformVersion"` // version of the complete OS
-//	KernelVersion        string `json:"kernelVersion"`   // version of the OS kernel (if available)
-//	KernelArch           string `json:"kernelArch"`      // native cpu architecture queried at runtime, as returned by `uname -m` or empty string in case of error
-//	VirtualizationSystem string `json:"virtualizationSystem"`
-//	VirtualizationRole   string `json:"virtualizationRole"` // guest or host
-//	HostID               string `json:"hostid"`             // ex: uuid
+//	Hostname             主机名称
+//	Uptime               开机时间
+//	BootTime             boot时间
+//	Procs                进程数目
+//	OS                   操作系统 如freebsd, linux
+//	Platform             如： ubuntu, linuxmint
+//	PlatformFamily       如: debian, rhel
+//	PlatformVersion      操作系统版本
+//	KernelVersion        操作系统内核版本
+//	KernelArch           内核架构
+//	VirtualizationSystem 虚拟系统
+//	VirtualizationRole   虚拟角色 guest or host
+//	HostID               hostid  // ex: uuid
 //}
 func GetHostInfo() *host.InfoStat {
 	HostInfo, err := host.Info()

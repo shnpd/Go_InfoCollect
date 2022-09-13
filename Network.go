@@ -8,12 +8,16 @@ import (
 	"unsafe"
 )
 
+//IP		IP地址
+//MAC		MAC地址
+//GateWay	网关
 type Network struct {
 	IP      map[string]string `json:"ip"`
 	MAC     map[string]string `json:"mac"`
 	GateWay []GateWay         `json:"gateway"`
 }
 
+//路由信息
 type rtInfo struct {
 	Dst              net.IPNet
 	Gateway, PrefSrc net.IP
@@ -23,18 +27,21 @@ type rtInfo struct {
 
 type routeSlice []*rtInfo
 
+//路由器信息
 type router struct {
 	ifaces []net.Interface
 	addrs  []net.IP
 	v4     routeSlice
 }
 
+//网关
 type GateWay struct {
 	InterfaceName string `json:"interface_name"`
 	GateWay       string `json:"gate_way"`
 	Ip            string `json:"ip"`
 }
 
+//获取路由信息
 func getRouteInfo() (*router, error) {
 	rtr := &router{}
 	tab, err := syscall.NetlinkRIB(syscall.RTM_GETROUTE, syscall.AF_INET)
@@ -108,6 +115,7 @@ func getRouteInfo() (*router, error) {
 	return rtr, nil
 }
 
+//获取网关信息
 func getGateWay() []GateWay {
 	newRoute, err := getRouteInfo()
 	if err != nil {
@@ -127,6 +135,7 @@ func getGateWay() []GateWay {
 	return gateWays
 }
 
+//获取IP地址
 func GetIpAddrs() map[string]string {
 	mpIp := make(map[string]string)
 	//获取网络接口
@@ -151,6 +160,7 @@ func GetIpAddrs() map[string]string {
 	return mpIp
 }
 
+//获取硬件地址
 func GetMacAddrs() map[string]string {
 	mpMac := make(map[string]string)
 	netInterfaces, err := net.Interfaces()
@@ -167,6 +177,7 @@ func GetMacAddrs() map[string]string {
 	return mpMac
 }
 
+//获取网络信息
 func GetNetInfo() Network {
 	ip := GetIpAddrs()
 	mac := GetMacAddrs()

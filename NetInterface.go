@@ -4,6 +4,11 @@ import (
 	"net"
 )
 
+//Index			序号
+//MTU			最大传输单元
+//Name			名称
+//HardwareAddr	硬件地址
+//Flags			标志
 type NetInterface struct {
 	Index        int       `json:"index"`
 	MTU          int       `json:"mtu"`

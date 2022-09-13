@@ -5,6 +5,7 @@ import (
 	"os/exec"
 )
 
+//DataAmount	流量
 type DataAmount struct {
 	DataAmount string `json:"dataAmount"`
 }

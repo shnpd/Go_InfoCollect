@@ -7,6 +7,10 @@ import (
 	"strings"
 )
 
+//Name 设备名
+//Manufacturer 设备厂商
+//SerialNumber 设备编码
+//Version 设备型号
 type Device struct {
 	Name         string `json:"name"`
 	Manufacturer string `json:"manufacturer"`
@@ -15,10 +19,6 @@ type Device struct {
 }
 
 func executiveDeviceOrder(attr string) []byte {
-	//name 设备名
-	//manufacturer 设备厂商
-	//serial_number 设备编码
-	//version 设备型号
 	var cmd *exec.Cmd
 	if attr == "name" {
 		cmd = exec.Command("/bin/bash", "-c", "sudo dmidecode -s system-product-name")
@@ -62,11 +62,6 @@ func executiveDeviceOrder(attr string) []byte {
 }
 
 func Getdevice() Device {
-
-	//name 设备名
-	//manufacturer 设备厂商
-	//serial_number 设备编码
-	//version 设备型号
 	name := string(executiveDeviceOrder("name"))
 	manu := string(executiveDeviceOrder("manufacturer"))
 	numb := string(executiveDeviceOrder("serial_number"))

@@ -5,18 +5,22 @@ import (
 	"os/exec"
 )
 
+//DebInstall	deb所安装的应用
+//rpmInstall	rpm所安装的应用
+//yumInstall	yum所安装的应用
 type Application struct {
 	DebInstall string `json:"debInstall"`
 	rpmInstall string `json:"rpmInstall"`
 	yumInstall string `json:"yumInstall"`
 }
 
+//GetAppInfo()函数通过linux命令采集已安装的应用软件、版本、描述
 func GetAppInfo() Application {
-	//deb安装
+	//dpkg -l 命令会列出系统中所有已安装的软件包信息
 	cmd := exec.Command("/bin/bash", "-c", "dpkg -l")
-	//rpm安装
+	//rpm -qa 列出所有被安装的rpm package
 	cmd2 := exec.Command("/bin/bash", "-c", "rpm -qa")
-	//yum安装
+	//yum list installed列出已安装的安装包
 	cmd3 := exec.Command("/bin/bash", "-c", "yum list installed")
 	//创建获取命令输出管道
 	stdout, err := cmd.StdoutPipe()
@@ -64,10 +68,12 @@ func GetAppInfo() Application {
 		panic(err3)
 	}
 
+	//结构化
 	appInfo := Application{
 		DebInstall: string(bytes),
 		rpmInstall: string(bytes2),
 		yumInstall: string(bytes3),
 	}
+	//返回数据
 	return appInfo
 }

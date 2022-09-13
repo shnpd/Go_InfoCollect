@@ -6,6 +6,8 @@ import (
 	"os/exec"
 )
 
+//SystemLog：操作系统日志
+//SecureLog：安全日志
 type Log struct {
 	SystemLog string `json:"systemLog"`
 	SecureLog string `json:"secureLog"`

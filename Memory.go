@@ -4,6 +4,9 @@ import (
 	"github.com/shirou/gopsutil/mem"
 )
 
+//SwapMemory	  交换内存
+//VirtualMemory	  虚拟内存
+//VirtualMemoryEx 虚拟交换内存
 type Memory struct {
 	SwapMemory      *mem.SwapMemoryStat      `json:"swapMemory"`
 	VirtualMemory   *mem.VirtualMemoryStat   `json:"virtualMemory"`
